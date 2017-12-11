@@ -14,7 +14,7 @@ module "network" "demo-network" {
 
 module "loadbalancer" "demo-lb" {
   #source                = "Azure/loadbalancer/azurerm"
-  source = "github.com/Azure/terraform-azurerm-loadbalancer"
+  source                = "github.com/Azure/terraform-azurerm-loadbalancer"
   resource_group_name   = "${var.resource_group_name}"
   location              = "${var.location}"
   prefix                = "tfaz"
