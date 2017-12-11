@@ -35,7 +35,7 @@ resource "azurerm_postgresql_firewall_rule" "test" {
 resource "null_resource" "db" {
   # Changes to any instance of the cluster requires re-provisioning
   triggers {
-    cluster_instance_ids = "${join(",", azurerm_postgresql_database.test.*.id)}"
+    cluster_instance_ids = "${azurerm_postgresql_firewall_rule.test.id},${azurerm_postgresql_database.test.id},${azurerm_public_ip.jumpbox.fqdn}"
   }
 
   # Bootstrap script can run on any instance of the cluster
