@@ -78,7 +78,7 @@ resource "azurerm_network_security_rule" "allowInternet80" {
 }
 
 resource "azurerm_network_security_rule" "allowJumpboxSSH" {
-  name = "allow-jumpbox-ssh"
+  name                        = "allow-jumpbox-ssh"
   direction                   = "Inbound"
   access                      = "Allow"
   priority                    = 210
