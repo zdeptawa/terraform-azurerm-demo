@@ -76,3 +76,18 @@ resource "azurerm_network_security_rule" "allowInternet80" {
   network_security_group_name = "${var.sg_name}"
   depends_on                  = ["module.network"]
 }
+
+resource "azurerm_network_security_rule" "allowJumpboxSSH" {
+  name = "allow-jumpbox-ssh"
+  direction                   = "Inbound"
+  access                      = "Allow"
+  priority                    = 210
+  source_address_prefix       = "*"
+  source_port_range           = "*"
+  destination_address_prefix  = "${azurerm_network_interface.jumpbox.private_ip_address}"
+  destination_port_range      = "22"
+  protocol                    = "Tcp"
+  resource_group_name         = "${azurerm_resource_group.default.name}"
+  network_security_group_name = "${var.sg_name}"
+  depends_on                  = ["module.network"]
+}
