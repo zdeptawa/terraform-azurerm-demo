@@ -38,7 +38,23 @@ module "computegroup" "demo-web" {
     admin_password      = "BestPasswordEver"
     ssh_key             = "~/.ssh/tfaz_id_rsa.pub"
 
-    cmd_extension       = "sudo apt-get -y install nginx; hostname > /var/www/html/index.html"
+    cmd_extension       = "sudo apt-get -y install nginx"
+}
+
+module "linuxservers" "bastion" {
+    #source = "Azure/compute/azurerm"
+    source         = "github.com/Azure/terraform-azurerm-compute"
+    resource_group_name = "${var.resource_group_name}"
+    location       = "${var.location}"
+    vm_hostname    = "tfaz-bastion"
+    nb_public_ip   = "1"
+    nb_instances   = "1"
+    vnet_subnet_id = "${module.network.vnet_subnets[0]}"
+    vm_os_simple   = "UbuntuServer"
+    public_ip_dns  = [ "tfaz-bastion" ]
+    admin_username = "tfaz"
+    admin_password = "BestPasswordEver"
+    ssh_key        = "~/.ssh/tfaz_id_rsa.pub"
 }
 
 resource "azurerm_network_security_rule" "allowInternet80" {
@@ -53,17 +69,20 @@ resource "azurerm_network_security_rule" "allowInternet80" {
     protocol               = "Tcp"
     resource_group_name    = "${var.resource_group_name}"
     network_security_group_name = "${var.sg_name}"
+    depends_on = ["module.network"]
 }
 
-module "linuxservers" "bastion" {
-    #source = "Azure/compute/azurerm"
-    source         = "github.com/Azure/terraform-azurerm-compute"
-    location       = "${var.location}"
-    vm_hostname    = "tfaz-bastion"
-    nb_public_ip   = "1"
-    remote_port    = "22"
-    nb_instances   = "1"
-    vnet_subnet_id = "${module.network.vnet_subnets[0]}"
-    vm_os_simple   = "UbuntuServer"
-    public_ip_dns  = [ "tfaz-bastion" ]
+resource "azurerm_network_security_rule" "allow22bastion" {
+    name                   = "allow-22-bastion"
+    direction              = "Inbound"
+    access                 = "Allow"
+    priority               = 300
+    source_address_prefix  = "*"
+    source_port_range      = "*"
+    destination_address_prefix = "${module.linuxservers.public_ip_address[0]}"
+    destination_port_range = "22"
+    protocol               = "Tcp"
+    resource_group_name    = "${var.resource_group_name}"
+    network_security_group_name = "${var.sg_name}"
+    depends_on = ["module.network","module.linuxservers"]
 }
