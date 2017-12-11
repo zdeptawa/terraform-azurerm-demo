@@ -58,8 +58,6 @@ module "computegroup" "demo-web" {
   admin_username = "tfaz"
   admin_password = "BestPasswordEver"
   ssh_key        = "~/.ssh/tfaz_id_rsa.pub"
-
-  cmd_extension = "sudo apt-get -y install nginx"
 }
 
 resource "azurerm_network_security_rule" "allowInternet80" {
