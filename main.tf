@@ -67,15 +67,3 @@ module "linuxservers" "bastion" {
     vm_os_simple   = "UbuntuServer"
     public_ip_dns  = [ "tfms-bastion" ]
 }
-
-output "bastion_ip" {
-    value = "${module.linuxservers.public_ip_address}"
-}
-
-output "bastion_public_name" {
-    value = "${module.linuxservers.public_ip_dns_name}"
-}
-
-output "lb_ip" {
-    value = "${module.loadbalancer.azurerm_public_ip_address}"
-}
