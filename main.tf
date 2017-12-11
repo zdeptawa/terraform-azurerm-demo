@@ -89,4 +89,5 @@ resource "azurerm_network_security_rule" "allowJumpboxSSH" {
   protocol                    = "Tcp"
   resource_group_name         = "${azurerm_resource_group.default.name}"
   network_security_group_name = "${var.sg_name}"
+  depends_on                  = ["module.network"]
 }
