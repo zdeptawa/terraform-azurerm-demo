@@ -58,8 +58,6 @@ module "computegroup" "demo-web" {
   admin_username = "tfaz"
   admin_password = "BestPasswordEver"
   ssh_key        = "~/.ssh/tfaz_id_rsa.pub"
-
-  cmd_extension = "sudo apt-get -y install nginx"
 }
 
 resource "azurerm_network_security_rule" "allowInternet80" {
@@ -73,8 +71,7 @@ resource "azurerm_network_security_rule" "allowInternet80" {
   destination_port_range      = "80"
   protocol                    = "Tcp"
   resource_group_name         = "${azurerm_resource_group.default.name}"
-  network_security_group_name = "${var.sg_name}"
-  depends_on                  = ["module.network"]
+  network_security_group_name = "${module.network.security_group_name}"
 }
 
 resource "azurerm_network_security_rule" "allowJumpboxSSH" {
@@ -88,6 +85,5 @@ resource "azurerm_network_security_rule" "allowJumpboxSSH" {
   destination_port_range      = "22"
   protocol                    = "Tcp"
   resource_group_name         = "${azurerm_resource_group.default.name}"
-  network_security_group_name = "${var.sg_name}"
-  depends_on                  = ["module.network"]
+  network_security_group_name = "${module.network.security_group_name}"
 }
