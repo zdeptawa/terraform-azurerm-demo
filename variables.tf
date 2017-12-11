@@ -3,7 +3,7 @@ variable "location" {
 }
 
 variable "resource_group_name" {
-  default = "tfaz-rg"
+  default = "tfaz-rg-nic"
 }
 
 variable "sg_name" {
