@@ -18,9 +18,33 @@ variable "sg_name" {
 #}
 
 variable "subnet_prefixes" {
-  default     = [ "10.0.1.0/24", "10.0.2.0/24"]
+  default = ["10.0.1.0/24", "10.0.2.0/24"]
 }
 
 variable "subnet_names" {
-  default     = [ "tfaz-public-subnet", "tfaz-private-subnet" ]
+  default = ["tfaz-public-subnet", "tfaz-private-subnet"]
+}
+
+variable "client_id" {
+  description = "client_id from your Azure login settings, this can be set using an environment variable by prefixing the env var with TF_VAR_client_id"
+}
+
+variable "client_secret" {
+  description = "client_secret from your Azure login settings, this can be set using an environment variable by prefixing the env var with TF_VAR_client_secret"
+}
+
+variable "subscription_id" {
+  description = "subscription_id from your Azure login settings, this can be set using an environment variable by prefixing the env var with TF_VAR_subscription_id"
+}
+
+variable "tenant_id" {
+  description = "tenant_id from your Azure login settings, this can be set using an environment variable by prefixing the env var with TF_VAR_tenant_id"
+}
+
+variable "db_user" {
+  default = "psqladminun"
+}
+
+variable "db_pass" {
+  default = "H@Sh1CoR3"
 }
