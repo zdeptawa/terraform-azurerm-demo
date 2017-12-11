@@ -1,2 +1,2 @@
 # terraform-azurerm-demo
-Terraform AzureRM Provider Demo
+This is a simple Terraform AzureRM provider demo.
