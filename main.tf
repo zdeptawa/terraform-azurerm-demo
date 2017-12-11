@@ -34,7 +34,7 @@ module "computegroup" "demo-web" {
     load_balancer_backend_address_pool_ids = "${module.loadbalancer.azurerm_lb_backend_address_pool_id}"
     lb_port             = { http = ["80", "Tcp", "80"] }
 
-    admin_username      = "tfaz-user"
+    admin_username      = "tfaz"
     admin_password      = "BestPasswordEver"
     ssh_key             = "~/.ssh/tfaz_id_rsa.pub"
 
