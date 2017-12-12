@@ -2,15 +2,15 @@
 
 This is a simple Terraform AzureRM provider demo. In it's default state, this demo will use a mixture of modules from the [Terraform Module Registry for Azure](http://registry.terraform.io/browse?provider=azurerm&verified=true) and custom Terraform code to deploy a demo application with a publicly accessible frontend IP that consists of:
 
-* an Azure Virtual Network (10.0.0.0/16)
-* a public subnet within that Virtual Network (10.0.1.0/24)
-* a private subnet within the Virtual Network (10.0.2.0/16)
+* an Azure Virtual Network (`10.0.0.0/16`)
+* a public subnet within that Virtual Network (`10.0.1.0/24`)
+* a private subnet within the Virtual Network (`10.0.2.0/16`)
 * an Azure Load Balancer with a public IP
 * an Azure Virtual Machine Scale Set (with three nodes in public subnet, private IPs only) running an application behind the load balancer
 * a jumpbox/bastion server within the public network with a public IP
 * Network Security Groups and rules necessary to allow HTTP traffic to the Scale Set/web tier as well as port 22 traffic for ssh to the jumpbox/bastion server
 * a PostgreSQL database server in the private subnet with rules necessary for communication from public subnet/web tier
-* a [sample application](https://github.com/nicholasjackson/gopher_search) created by [Nicolas Jackson](https://github.com/nicholasjackson)
+* a [sample application](https://github.com/nicholasjackson/gopher_search) created by [Nicolas Jackson](https://github.com/nicholasjackson) deployed to the multi-tier environment
 
 
 Some prerequisites - you will need to have environment variables set for the following:
