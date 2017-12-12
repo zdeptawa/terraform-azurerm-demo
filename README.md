@@ -65,7 +65,7 @@ Do not upload your private key files to a public location such as GitHub!
 
 Deploying the Demo
 ==================
-To deploy this on Azure, make sure you've got the prerequisites covered, [Terraform](https://www.terraform.io/) installed locally (at least version `0.11.1`), and the environment variables set for the `provider` information as well as the ssh key locations as we have already mentioned. After that, it's a matter of performing the following:
+To deploy this on Azure, make sure you've got the prerequisites covered, [Terraform](https://www.terraform.io/) installed locally (at least version `0.11.1`), and the environment variables set for the azurerm provider. You'll also need the ssh key locations configured as environment variables as we have already mentioned. After that, it's a matter of performing the following:
 
 1. Make sure that your prerequisites are in place and that your credentials work on Azure!
 2. `git clone` this repository and change directory to it
@@ -75,7 +75,7 @@ To deploy this on Azure, make sure you've got the prerequisites covered, [Terraf
 6. When prompted, type `yes` if you agree to continue
 7. Your environment will be provisioned!
 
-Once the nodes are healthy in the Load Balancer, you should be able to access the application via the public IP of the Load Balancer on `port 80`. This IP address is configured as an output in `outputs.tf`, so you will see it in your terminal as an output at the very end of your `terraform apply` run as it completes. You should also be able to access the jumpbox/bastion via ssh on `port 22` using the private key specified. The jumpbox/bastion server is also configured as an output and will display at the end of the `terraform apply` run as well.
+Once the nodes are healthy in the Load Balancer, you should be able to access the application via the public IP of the Load Balancer on `port 80`. This IP address is configured as an output in `outputs.tf`, so you will see it in your terminal as an output at the very end of your `terraform apply` run as it completes. You should also be able to access the jumpbox/bastion server on it's public IP via ssh on `port 22` using the private key specified in your Terraform configuration (the private key from the key pair created earlier for this demo). The jumpbox/bastion server's public IP is also configured as an output and will display at the end of the `terraform apply` run as well.
 
 That's it! Use this code as a sample or extend it to fit your own needs! Thanks for checking out the demo! =]
 
