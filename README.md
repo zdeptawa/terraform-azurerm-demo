@@ -43,9 +43,14 @@ To deploy this on Azure, make sure you've got the prerequisites covered ([Terraf
 6. When prompted, type `yes` if you agree to continue
 7. Your environment will be provisioned!
 
-Once the nodes are healthy in the Load Balancer, you should be able to access the application via the public IP of the Load Balancer. You should also be able to access the jumpbox/bastion via ssh on port 22 using the private key specified.
+Once the nodes are healthy in the Load Balancer, you should be able to access the application via the public IP of the Load Balancer on `port 80`. You should also be able to access the jumpbox/bastion via ssh on `port 22` using the private key specified.
 
 That's it! Use this code as a sample or extend it to fit your own needs! Thanks for checking out the demo! =]
+
+
+Teardown
+========
+When you're ready to bring this infrastructure down, simply run `terraform destroy` in the repository folder (or the folder where the Terraform code/main.tf resides). ***BE SURE TO DOUBLE CHECK THE RESOURCES THAT WILL BE DESTROYED BY THIS COMMAND BEFORE TYPING `yes` TO CONTINUE!!!***
 
 
 Special Thanks
