@@ -20,19 +20,47 @@ Some prerequisites - you will need to have environment variables set for the fol
 * `VAR_client_id`
 * `VAR_client_secret`
 * `VAR_tenant_id`
+* `VAR_ssh_key_private`
+* `VAR_ssh_key_public`
 
-You can alternatively provide Terraform variables for `subscription_id`, `client_id`, `client_secret`, and `tenant_id` if you'd prefer. These values are used to authenticate and connect to Azure via Terraform and are found in the `provider` section of the `main.tf` file as seen below:
+To easily set these environment variables,  you can create and source a bash script. Here is an example of the contents:
 
-```hcl
-provider "azurerm" {
-  subscription_id = "${var.subscription_id}"
-  client_id       = "${var.client_id}"
-  client_secret   = "${var.client_secret}"
-  tenant_id       = "${var.tenant_id}"
-}
+```bash
+export TF_VAR_subscription_id="xxxxxxx"
+export TF_VAR_client_id="xxxxxx"
+export TF_VAR_client_secret="xxxxxx"
+export TF_VAR_tenant_id="xxxxxxx"
+export TF_VAR_ssh_key_private="$(cat ./tfaz_id_rsa)"
+export TF_VAR_ssh_key_public="$(cat ./tfaz_id_rsa.pub)"
 ```
 
-You will also need to have the ssh key file created on your local system. By default, the ssh_key will be pulled from `~/.ssh/tfaz_id_rsa.pub`.
+You will also need to have the ssh key files created on your local system. By default, the ssh_key will be pulled from `~/.ssh/tfaz_id_rsa.pub`.
+
+Generating Public and Private Keys
+==================================
+```bash
+$ ssh-keygen -t rsa -b 4096 -f tfaz_id_rsa
+Generating public/private rsa key pair.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in tfaz_id_rsa.
+Your public key has been saved in tfaz_id_rsa.pub.
+The key fingerprint is:
+SHA256:vnc65Z6gIbT6pi+MIF+p2KtoDszEd3sPcl/13EIulzE nicj@Nics-MacBook-Pro.local
+The keys randomart image is:
++---[RSA 4096]----+
+|                 |
+|                 |
+|                 |
+|.                |
+| o . o. S    .E  |
+|* . +..o    ooo+.|
+|oB = oo+o .+. =o.|
+|+.= o.=.+++.o+ . |
+|=o..o*o o+.=o    |
++----[SHA256]-----+
+```
+Do not upload your private key files to a public location such as GitHub!
 
 
 Deploying the Demo
