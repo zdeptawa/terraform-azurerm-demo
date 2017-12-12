@@ -43,7 +43,7 @@ resource "null_resource" "db" {
   connection {
     host        = "${azurerm_public_ip.jumpbox.fqdn}"
     user        = "azureuser"
-    private_key = "${file("~/.ssh/tfaz_id_rsa")}"
+    private_key = "${var.ssh_key_private}"
   }
 
   provisioner "remote-exec" {

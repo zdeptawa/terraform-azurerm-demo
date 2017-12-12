@@ -52,3 +52,5 @@ variable "db_pass" {
 variable "ssh_key_pub" {
   default = "./tfaz_id_rsa.pub"
 }
+
+variable "ssh_key_private" {}
