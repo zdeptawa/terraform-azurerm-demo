@@ -32,7 +32,7 @@ module "loadbalancer" "demo-lb" {
   prefix              = "tfaz"
 
   lb_port = {
-    http = ["80", "Tcp", "80"]
+    http = ["80", "Tcp", "3000"]
   }
 
   frontend_name = "tfaz-public-ip"
@@ -49,15 +49,12 @@ module "computegroup" "demo-web" {
   vnet_subnet_id                         = "${module.network.vnet_subnets[0]}"
   load_balancer_backend_address_pool_ids = "${module.loadbalancer.azurerm_lb_backend_address_pool_id}"
 
-  cmd_extension = "wget -O install.sh https://github.com/nicholasjackson/gopher_search/releases/download/v0.1/install.sh && chmod +x ./install.sh && ./install.sh ${azurerm_postgresql_server.test.fqdn} ${var.db_user} ${var.db_pass}"
+  cmd_extension = "sh install.sh ${azurerm_postgresql_server.test.fqdn} ${var.db_user}@${azurerm_postgresql_server.test.name} ${var.db_pass}"
+  cmd_script    = "https://github.com/nicholasjackson/gopher_search/releases/download/v0.1/install.sh"
 
-  lb_port = {
-    http = ["80", "Tcp", "3000"]
-  }
-
-  admin_username = "tfaz"
+  admin_username = "azureuser"
   admin_password = "BestPasswordEver"
-  ssh_key        = "~/.ssh/tfaz_id_rsa.pub"
+  ssh_key        = "${var.ssh_key_public}"
 }
 
 resource "azurerm_network_security_rule" "allowInternet80" {
@@ -69,6 +66,20 @@ resource "azurerm_network_security_rule" "allowInternet80" {
   source_port_range           = "*"
   destination_address_prefix  = "*"
   destination_port_range      = "80"
+  protocol                    = "Tcp"
+  resource_group_name         = "${azurerm_resource_group.default.name}"
+  network_security_group_name = "${module.network.security_group_name}"
+}
+
+resource "azurerm_network_security_rule" "allowInternet3000" {
+  name                        = "allow-internet-port-3000"
+  direction                   = "Inbound"
+  access                      = "Allow"
+  priority                    = 205
+  source_address_prefix       = "*"
+  source_port_range           = "*"
+  destination_address_prefix  = "*"
+  destination_port_range      = "3000"
   protocol                    = "Tcp"
   resource_group_name         = "${azurerm_resource_group.default.name}"
   network_security_group_name = "${module.network.security_group_name}"

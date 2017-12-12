@@ -46,5 +46,9 @@ variable "db_user" {
 }
 
 variable "db_pass" {
-  default = "H@Sh1CoR3"
+  default = "HaSh1CoR3"
 }
+
+variable "ssh_key_public" {}
+
+variable "ssh_key_private" {}
