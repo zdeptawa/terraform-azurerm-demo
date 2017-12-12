@@ -80,7 +80,7 @@ resource "azurerm_virtual_machine" "jumpbox" {
 
     ssh_keys {
       path     = "/home/azureuser/.ssh/authorized_keys"
-      key_data = "${file("~/.ssh/tfaz_id_rsa.pub")}"
+      key_data = "${var.ssh_key_public}"
     }
   }
 
