@@ -54,7 +54,7 @@ module "computegroup" "demo-web" {
 
   admin_username = "azureuser"
   admin_password = "BestPasswordEver"
-  ssh_key        = "~/.ssh/tfaz_id_rsa.pub"
+  ssh_key        = "${var.ssh_key_pub}"
 }
 
 resource "azurerm_network_security_rule" "allowInternet80" {
