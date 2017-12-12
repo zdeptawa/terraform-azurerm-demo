@@ -30,37 +30,40 @@ export TF_VAR_subscription_id="xxxxxxx"
 export TF_VAR_client_id="xxxxxx"
 export TF_VAR_client_secret="xxxxxx"
 export TF_VAR_tenant_id="xxxxxxx"
-export TF_VAR_ssh_key_private="$(cat ./tfaz_id_rsa)"
-export TF_VAR_ssh_key_public="$(cat ./tfaz_id_rsa.pub)"
+export TF_VAR_ssh_key_private="$(cat ~/.ssh/tfaz_id_rsa)"
+export TF_VAR_ssh_key_public="$(cat ~/.ssh/tfaz_id_rsa.pub)"
 ```
 
-You will also need to have the private and public ssh key files created on your local system. By default, the public ssh key will be pulled from `./tfaz_id_rsa.pub` if using the example above to set your environment variables.
+You will also need to have the private and public ssh key files created on your local system. By default, the public ssh key will be pulled from `~/.ssh/tfaz_id_rsa.pub` if using the example above to set your environment variables. Be sure to set these values to the location where your public and private ssh key exist that you'd like to use for this demo.
 
 Generating Public and Private Keys
 ==================================
+If you'd like to generate an ssh key pair for this demo, you can run the command below to do so. Feel free to change the ``
+
 ```bash
-$ ssh-keygen -t rsa -b 4096 -f tfaz_id_rsa
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/tfaz_id_rsa
 Generating public/private rsa key pair.
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
-Your identification has been saved in tfaz_id_rsa.
-Your public key has been saved in tfaz_id_rsa.pub.
+Your identification has been saved in ~/.ssh/tfaz_id_rsa.
+Your public key has been saved in ~/.ssh/tfaz_id_rsa.pub.
 The key fingerprint is:
-SHA256:vnc65Z6gIbT6pi+MIF+p2KtoDszEd3sPcl/13EIulzE nicj@Nics-MacBook-Pro.local
+SHA256:urRTPWzDLZqNqovY//S80wLudutgocF5PvL1khlwJGs user@hostname.local
 The keys randomart image is:
 +---[RSA 4096]----+
 |                 |
-|                 |
-|                 |
-|.                |
-| o . o. S    .E  |
-|* . +..o    ooo+.|
-|oB = oo+o .+. =o.|
-|+.= o.=.+++.o+ . |
-|=o..o*o o+.=o    |
+|      . .        |
+|       +         |
+|   . .E .        |
+|    +.ooS+ .     |
+|     =.oo O .    |
+|    o.Oo.@ +     |
+| o . *+O@.o      |
+|. o.+*B=**.      |
 +----[SHA256]-----+
 ```
-Do not upload your private key files to a public location such as GitHub!
+
+**IMPORTANT** Do not upload your ssh private key file to a public location such as GitHub! **IMPORTANT**
 
 
 Deploying the Demo
