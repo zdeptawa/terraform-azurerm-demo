@@ -32,7 +32,7 @@ module "loadbalancer" "demo-lb" {
   prefix              = "tfaz"
 
   lb_port = {
-    http = ["80", "Tcp", "3000"]
+    http = ["80", "HTTP", "3000"]
   }
 
   frontend_name = "tfaz-public-ip"
