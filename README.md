@@ -48,8 +48,12 @@ Once the nodes are healthy in the Load Balancer, you should be able to access th
 That's it! Use this code as a sample or extend it to fit your own needs! Thanks for checking out the demo! =]
 
 
+Special Thanks
+==============
+* [Ashley McNamara](https://github.com/ashleymcnamara) for her amazing [gopher images](https://github.com/ashleymcnamara/gophers) used by the application!
+
+
 Authors
 =======
 * [Nicolas Jackson](https://github.com/nicholasjackson)
 * [Zachary Deptawa](https://github.com/zdeptawa)
-* Amazing [gopher images](https://github.com/ashleymcnamara/gophers) courtesy of the awesome [Ashley McNamara](https://github.com/ashleymcnamara)
