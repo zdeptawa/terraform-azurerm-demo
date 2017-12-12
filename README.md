@@ -38,7 +38,7 @@ You will also need to have the private and public ssh key files created on your 
 
 Generating Public and Private Keys
 ==================================
-If you'd like to generate an ssh key pair for this demo, you can run the command below to do so. Feel free to change `~/.ssh/tfaz_id_rsa` to whatever ssk key pair location and name you'd like - but be sure have this location set in your `TF_VAR_ssh_key_public` and `TF_VAR_ssh_key_private` environment variables as mentioned in the prerequisites above!
+If you'd like to generate an ssh key pair for this demo, you can run the command below to do so. Feel free to change `~/.ssh/tfaz_id_rsa` to whatever ssh key pair location and name you'd like - but be sure have this location set in your `TF_VAR_ssh_key_public` and `TF_VAR_ssh_key_private` environment variables as mentioned in the prerequisites above!
 
 ```bash
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/tfaz_id_rsa
