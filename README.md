@@ -1,6 +1,6 @@
 # terraform-azurerm-demo
 
-This is a simple Terraform AzureRM provider demo. In it's default state, this demo will use a mixture of modules from the [Terraform Module Registry for Azure] (http://registry.terraform.io/browse?provider=azurerm&verified=true) and custom Terraform code to deploy a demo application with a publicly accessible frontend IP that consists of:
+This is a simple Terraform AzureRM provider demo. In it's default state, this demo will use a mixture of modules from the [Terraform Module Registry for Azure](http://registry.terraform.io/browse?provider=azurerm&verified=true) and custom Terraform code to deploy a demo application with a publicly accessible frontend IP that consists of:
 
 * an Azure Virtual Network (10.0.0.0/16)
 * a public subnet within that Virtual Network (10.0.1.0/24)
@@ -10,7 +10,7 @@ This is a simple Terraform AzureRM provider demo. In it's default state, this de
 * a jumpbox/bastion server within the public network with a public IP
 * Network Security Groups and rules necessary to allow HTTP traffic to the Scale Set/web tier as well as port 22 traffic for ssh to the jumpbox/bastion server
 * a PostgreSQL database server in the private subnet with rules necessary for communication from public subnet/web tier
-* a [sample application] (https://github.com/nicholasjackson/gopher_search) created by [Nicolas Jackson] (https://github.com/nicholasjackson)
+* a [sample application](https://github.com/nicholasjackson/gopher_search) created by [Nicolas Jackson](https://github.com/nicholasjackson)
 
 
 Some prerequisites - you will need to have environment variables set for the following:
@@ -33,7 +33,7 @@ provider "azurerm" {
 
 You will also need to have the ssh key file created on your local system. By default, the ssh_key will be pulled from `~/.ssh/tfaz_id_rsa.pub`.
 
-To deploy this on Azure, make sure you've got the prerequisites covered ([Terraform] (https://www.terraform.io/) installed locally (at least version 0.11.1), settings for `provider` and an ssh key in place). After that, it's a matter of:
+To deploy this on Azure, make sure you've got the prerequisites covered ([Terraform](https://www.terraform.io/) installed locally (at least version `0.11.1`), settings for `provider` and an ssh key in place). After that, it's a matter of performing the following:
 
 1. Make sure that your prerequisites are in place and that your credentials work on Azure!
 2. `git clone` this repository and change directory to it
@@ -50,6 +50,6 @@ That's it! Use this code as a sample or extend it to fit your own needs! Thanks 
 
 Authors
 =======
-[Nicolas Jackson] (https://github.com/nicholasjackson)
-[Zachary Deptawa] (https://github.com/zdeptawa)
-Amazing gopher images courtesy of the awesome [Ashley McNamara] (https://github.com/ashleymcnamara)
+[Nicolas Jackson](https://github.com/nicholasjackson)
+[Zachary Deptawa](https://github.com/zdeptawa)
+Amazing gopher images courtesy of the awesome [Ashley McNamara](https://github.com/ashleymcnamara)
