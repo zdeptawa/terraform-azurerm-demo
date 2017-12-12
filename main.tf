@@ -49,7 +49,7 @@ module "computegroup" "demo-web" {
   vnet_subnet_id                         = "${module.network.vnet_subnets[0]}"
   load_balancer_backend_address_pool_ids = "${module.loadbalancer.azurerm_lb_backend_address_pool_id}"
 
-  cmd_extension = "sh install.sh ${azurerm_postgresql_server.test.fqdn} ${var.db_user} ${var.db_pass}"
+  cmd_extension = "sh install.sh ${azurerm_postgresql_server.test.fqdn} ${var.db_user}@${azurerm_postgresql_server.test.name} ${var.db_pass}"
   cmd_script    = "https://github.com/nicholasjackson/gopher_search/releases/download/v0.1/install.sh"
 
   admin_username = "azureuser"
