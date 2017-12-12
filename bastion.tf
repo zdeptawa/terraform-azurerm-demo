@@ -3,7 +3,7 @@ resource "azurerm_public_ip" "jumpbox" {
   location                     = "${var.location}"
   resource_group_name          = "${azurerm_resource_group.default.name}"
   public_ip_address_allocation = "static"
-  domain_name_label            = "${var.resource_group_name}-ssh"
+  #domain_name_label            = "${var.resource_group_name}-ssh"
 
   tags {
     environment = "dev"
