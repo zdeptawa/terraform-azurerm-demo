@@ -65,7 +65,7 @@ Do not upload your private key files to a public location such as GitHub!
 
 Deploying the Demo
 ==================
-To deploy this on Azure, make sure you've got the prerequisites covered, ([Terraform](https://www.terraform.io/) installed locally (at least version `0.11.1`), and the environment variables set for the `provider` information as well as the ssh key locations as we have already mentioned. After that, it's a matter of performing the following:
+To deploy this on Azure, make sure you've got the prerequisites covered, [Terraform](https://www.terraform.io/) installed locally (at least version `0.11.1`), and the environment variables set for the `provider` information as well as the ssh key locations as we have already mentioned. After that, it's a matter of performing the following:
 
 1. Make sure that your prerequisites are in place and that your credentials work on Azure!
 2. `git clone` this repository and change directory to it
