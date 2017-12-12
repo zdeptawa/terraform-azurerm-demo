@@ -14,16 +14,16 @@ This is a simple Terraform AzureRM provider demo. In it's default state, this de
 
 Prerequisites
 =============
-Some prerequisites - you will need to have environment variables set for the following:
+First, some prerequisites - you will need to have environment variables set for the following:
 
-* `VAR_subscription_id`
-* `VAR_client_id`
-* `VAR_client_secret`
-* `VAR_tenant_id`
-* `VAR_ssh_key_private`
-* `VAR_ssh_key_public`
+* `TF_VAR_subscription_id`
+* `TF_VAR_client_id`
+* `TF_VAR_client_secret`
+* `TF_VAR_tenant_id`
+* `TF_VAR_ssh_key_private`
+* `TF_VAR_ssh_key_public`
 
-To easily set these environment variables,  you can create and source a bash script. Here is an example of the contents:
+To easily set these environment variables for an active terminal session, you can create and source a bash script. Here is an example of the contents:
 
 ```bash
 export TF_VAR_subscription_id="xxxxxxx"
@@ -34,7 +34,7 @@ export TF_VAR_ssh_key_private="$(cat ./tfaz_id_rsa)"
 export TF_VAR_ssh_key_public="$(cat ./tfaz_id_rsa.pub)"
 ```
 
-You will also need to have the ssh key files created on your local system. By default, the ssh_key will be pulled from `~/.ssh/tfaz_id_rsa.pub`.
+You will also need to have the private and public ssh key files created on your local system. By default, the public ssh key will be pulled from `./tfaz_id_rsa.pub` if using the example above to set your environment variables.
 
 Generating Public and Private Keys
 ==================================
@@ -65,7 +65,7 @@ Do not upload your private key files to a public location such as GitHub!
 
 Deploying the Demo
 ==================
-To deploy this on Azure, make sure you've got the prerequisites covered ([Terraform](https://www.terraform.io/) installed locally (at least version `0.11.1`), settings for `provider` and an ssh key in place). After that, it's a matter of performing the following:
+To deploy this on Azure, make sure you've got the prerequisites covered, [Terraform](https://www.terraform.io/) installed locally (at least version `0.11.1`), and the environment variables set for the azurerm provider. You'll also need the ssh key locations configured as environment variables as we have already mentioned. After that, it's a matter of performing the following:
 
 1. Make sure that your prerequisites are in place and that your credentials work on Azure!
 2. `git clone` this repository and change directory to it
@@ -75,22 +75,22 @@ To deploy this on Azure, make sure you've got the prerequisites covered ([Terraf
 6. When prompted, type `yes` if you agree to continue
 7. Your environment will be provisioned!
 
-Once the nodes are healthy in the Load Balancer, you should be able to access the application via the public IP of the Load Balancer on `port 80`. You should also be able to access the jumpbox/bastion via ssh on `port 22` using the private key specified.
+Once the nodes are healthy in the Load Balancer, you should be able to access the application via the public IP of the Load Balancer on `port 80`. This IP address is configured as an output in `outputs.tf`, so you will see it in your terminal as an output at the very end of your `terraform apply` run as it completes. You should also be able to access the jumpbox/bastion server on it's public IP via ssh on `port 22` using the private key specified in your Terraform configuration (the private key from the key pair created earlier for this demo). The jumpbox/bastion server's public IP is also configured as an output and will display at the end of the `terraform apply` run as well.
 
 That's it! Use this code as a sample or extend it to fit your own needs! Thanks for checking out the demo! =]
 
 
 Teardown
 ========
-When you're ready to bring this infrastructure down, simply run `terraform destroy` in the repository folder (or the folder where the Terraform code/main.tf resides). ***BE SURE TO DOUBLE CHECK THE RESOURCES THAT WILL BE DESTROYED BY THIS COMMAND BEFORE TYPING `yes` TO CONTINUE!!!***
+When you're ready to bring this infrastructure down, simply run `terraform destroy` in the repository folder (or the folder where the Terraform configuration or .tf files reside). ***BE SURE TO DOUBLE CHECK THE RESOURCES THAT WILL BE DESTROYED BY THIS COMMAND BEFORE TYPING `yes` TO CONTINUE!!!***
 
 
 Special Thanks
 ==============
-* [Ashley McNamara](https://github.com/ashleymcnamara) for her amazing [gopher images](https://github.com/ashleymcnamara/gophers) used by the [demo application](https://github.com/nicholasjackson/gopher_search)!
+* [Ashley McNamara](https://github.com/ashleymcnamara) for her amazing [gopher images](https://github.com/ashleymcnamara/gophers) used by the [demo application](https://github.com/nicholasjackson/gopher_search)! Find Ashley on Twitter [@ashleymcnamara](https://twitter.com/ashleymcnamara)
 
 
 Authors
 =======
-* [Nicolas Jackson](https://github.com/nicholasjackson)
-* [Zachary Deptawa](https://github.com/zdeptawa)
+* [Nicolas Jackson](https://github.com/nicholasjackson) - Twitter [@sheriffjackson](https://twitter.com/sheriffjackson)
+* [Zachary Deptawa](https://github.com/zdeptawa) - Twitter [@zdeptawa](https://twitter.com/zdeptawa)
