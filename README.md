@@ -12,7 +12,8 @@ This is a simple Terraform AzureRM provider demo. In it's default state, this de
 * a PostgreSQL database server in the private subnet with rules necessary for communication from public subnet/web tier
 * a [sample application](https://github.com/nicholasjackson/gopher_search) created by [Nicolas Jackson](https://github.com/nicholasjackson) deployed to the multi-tier environment
 
-
+Prerequisites
+=============
 Some prerequisites - you will need to have environment variables set for the following:
 
 * `VAR_subscription_id`
@@ -33,6 +34,9 @@ provider "azurerm" {
 
 You will also need to have the ssh key file created on your local system. By default, the ssh_key will be pulled from `~/.ssh/tfaz_id_rsa.pub`.
 
+
+Deploying the Demo
+==================
 To deploy this on Azure, make sure you've got the prerequisites covered ([Terraform](https://www.terraform.io/) installed locally (at least version `0.11.1`), settings for `provider` and an ssh key in place). After that, it's a matter of performing the following:
 
 1. Make sure that your prerequisites are in place and that your credentials work on Azure!
