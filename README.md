@@ -10,7 +10,7 @@ This is a simple Terraform AzureRM provider demo. In it's default state, this de
 * a jumpbox/bastion server within the public network with a public IP
 * Network Security Groups and rules necessary to allow HTTP traffic to the Scale Set/web tier as well as port 22 traffic for ssh to the jumpbox/bastion server
 * a PostgreSQL database server in the private subnet with rules necessary for communication from public subnet/web tier
-* a [sample application](https://github.com/nicholasjackson/gopher_search) created by [Nicolas Jackson](https://github.com/nicholasjackson) deployed to the multi-tier environment
+* a [demo application](https://github.com/nicholasjackson/gopher_search) created by [Nicolas Jackson](https://github.com/nicholasjackson) deployed to the multi-tier environment
 
 Prerequisites
 =============
@@ -59,7 +59,7 @@ When you're ready to bring this infrastructure down, simply run `terraform destr
 
 Special Thanks
 ==============
-* [Ashley McNamara](https://github.com/ashleymcnamara) for her amazing [gopher images](https://github.com/ashleymcnamara/gophers) used by the application!
+* [Ashley McNamara](https://github.com/ashleymcnamara) for her amazing [gopher images](https://github.com/ashleymcnamara/gophers) used by the [demo application](https://github.com/nicholasjackson/gopher_search)!
 
 
 Authors
