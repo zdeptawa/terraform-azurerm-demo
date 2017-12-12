@@ -12,3 +12,7 @@ output "lb_ip" {
   description = "public IP address of the LB"
   value       = "${module.loadbalancer.azurerm_public_ip_address}"
 }
+
+output "postgresql_fqdn" {
+  value = "${azurerm_postgresql_server.test.fqdn}"
+}
