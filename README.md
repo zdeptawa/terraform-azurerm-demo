@@ -50,6 +50,6 @@ That's it! Use this code as a sample or extend it to fit your own needs! Thanks 
 
 Authors
 =======
-[Nicolas Jackson](https://github.com/nicholasjackson)
-[Zachary Deptawa](https://github.com/zdeptawa)
-Amazing gopher images courtesy of the awesome [Ashley McNamara](https://github.com/ashleymcnamara)
+* [Nicolas Jackson](https://github.com/nicholasjackson)
+* [Zachary Deptawa](https://github.com/zdeptawa)
+* Amazing [gopher images](https://github.com/ashleymcnamara/gophers) courtesy of the awesome [Ashley McNamara](https://github.com/ashleymcnamara)
